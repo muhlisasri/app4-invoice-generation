@@ -25,12 +25,12 @@ for filepath in filepaths:
     pdf.cell(w=30, h=5, txt=columns[3], border=1)
     pdf.cell(w=30, h=5, txt=columns[4], border=1, ln=1)
 
-    for i in df.index:
+    for index, row in df.iterrows():
         pdf.set_font(family="Times", size=10)
-        pdf.cell(w=30, h=5, txt=str(df["product_id"][i]), border=1)
-        pdf.cell(w=65, h=5, txt=str(df["product_name"][i]), border=1)
-        pdf.cell(w=35, h=5, txt=str(df["amount_purchased"][i]), border=1)
-        pdf.cell(w=30, h=5, txt=str(df["price_per_unit"][i]), border=1)
-        pdf.cell(w=30, h=5, txt=str(df["total_price"][i]), border=1, ln=1)
+        pdf.cell(w=30, h=5, txt=str(row["product_id"]), border=1)
+        pdf.cell(w=65, h=5, txt=str(row["product_name"]), border=1)
+        pdf.cell(w=35, h=5, txt=str(row["amount_purchased"]), border=1)
+        pdf.cell(w=30, h=5, txt=str(row["price_per_unit"]), border=1)
+        pdf.cell(w=30, h=5, txt=str(row["total_price"]), border=1, ln=1)
 
     pdf.output(f"PDF/{filename}.pdf")
